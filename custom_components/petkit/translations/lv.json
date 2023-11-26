@@ -1,590 +1,591 @@
 {
-    "config": {
-        "abort": {
-            "already_configured": "PetKit account is already configured",
-            "reauth_successful": "Reauthentication was successful"
-        },
-        "error": {
-            "cannot_connect": "Failed to connect",
-            "invalid_auth": "Invalid authentication. Are your credentials correct?",
-            "no_devices": "No devices found on account",
-            "server_busy": "PetKit servers are busy. Please try again later.",
-            "petkit_error": "Unknown error encountered. Please see Home Assistant logs for more details.",
-            "region_error": "Please select the country associated with your account.",
-            "timezone_error": "A timezone could not be found. If you are running Home Assistant as a standalone Docker container, you must define the TZ environmental variable. If the TZ variable is defined or you are running Home Assistant OS, your timezone was not found in the tzlocal library - Please manually select a timezone during setup."
-        },
-        "step": {
-            "user": {
-                "data": {
-                    "email": "PetKit account email",
-                    "password": "PetKit account password",
-                    "region": "Select the country associated with your account",
-                    "timezone": "Select a timezone manually or attempt to set it automatically",
-                    "polling_interval": "Polling interval (seconds)"
-                },
-                "title": "Fill in your PetKit credentials"
-            },
-            "reauth_confirm": {
-                "data": {
-                    "email": "PetKit account email",
-                    "password": "PetKit account password",
-                    "region": "Select the country associated with your account",
-                    "timezone": "Select a timezone manually or attempt to set it automatically",
-                    "polling_interval": "Polling interval (seconds)"
-                },
-                "title": "Reauthenticate with your PetKit credentials"
-            }
-        }
+  "config": {
+    "abort": {
+      "already_configured": "Jūsu PetKit konts jau ir konfigurēts.",
+      "reauth_successful": "Reautentifikācija bija veiksmīga"
     },
-    "options": {
-      "step": {
-        "petkit_options": {
-          "data": {
-            "region": "Select the country associated with your account",
-            "timezone": "Select a timezone manually or attempt to set it automatically",
-            "polling_interval": "Polling interval (seconds)"
+    "error": {
+      "cannot_connect": "Neizdevās pieslēgties",
+      "invalid_auth": "Neveiksmīga autentifikācija. Vai jūsu autorizācijas dati ir pareizi?",
+      "no_devices": "Kontā nav atrasta neviena ierīce",
+      "server_busy": "PetKit serveri ir aizņemti. Lūdzu, mēģiniet vēlāk.",
+      "petkit_error": "Nezināma kļūda. Lūdzu, skatiet Home Assistant žurnālus, lai iegūtu vairāk informācijas.",
+      "region_error": "Lūdzu, atlasiet valsti, kas saistīta ar jūsu kontu.",
+      "timezone_error": "Nav atrasta laika josla. Ja jūs izmmantojat Home Assistant kā atsevišķu Docker konteineru, jums jādefinē TZ vides mainīgais. Ja TZ mainīgais ir definēts vai jūs izmantojiet Home Assistant OS, jūsu laika josla netika atrasta tzlocal bibliotēkā - lūdzu manuāli atlasiet laika joslu uzstādīšanas laikā."
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "PetKit konta e-pasts",
+          "password": "PetKit konta parole",
+          "region": "Atlasiet kontam saistīto valsti",
+          "timezone": "Izvēlieties laika joslu manuāli vai mēģiniet to iestatīt automātiski.",
+          "polling_interval": "Intervāls starp aptaujām (sekundēs)"
+        },
+        "title": "Ievadiet savus PetKit datus"
+      },
+      "reauth_confirm": {
+        "data": {
+          "email": "PetKit konta e-pasts",
+          "password": "PetKit konta parole",
+          "region": "Atlasiet kontam saistīto valsti",
+          "timezone": "Atlasiet laiku zonu manuāli vai mēģiniet to iestatīt automātiski.",
+          "polling_interval": "Intervāls starp datu izgūšanu (sekundes)"
+        },
+        "title": "Atkārtoti autentificēties ar savu PetKit akreditāciju"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "petkit_options": {
+        "data": {
+          "region": "Atlasiet kontam saistīto valsti",
+          "timezone": "Izvēlēties laika zonu manuāli vai mēģināt to iestatīt automātiski",
+          "polling_interval": "Intervāls starp datu izgūšanu (sekundēs)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "water_level": {
+        "name": "Ūdens līmenis"
+      },
+      "food_level": {
+        "name": "Pārtikas līmenis"
+      },
+      "battery_installed": {
+        "name": "Akumulators uzstādīts"
+      },
+      "battery": {
+        "name": "Akumulators"
+      },
+      "wastebin": {
+        "name": "Atkritumu tvertne"
+      },
+      "litter": {
+        "name": "Pakaiši"
+      },
+      "deodorizer": {
+        "name": "Dezodorants"
+      },
+      "manually_paused": {
+        "name": "Manuāli apturēts"
+      },
+      "pura_air_liquid": {
+        "name": "Pura Gaisa šķidrums"
+      },
+      "food_level_hopper_one": {
+        "name": "Pārtikas līmenis trauks 1"
+      },
+      "food_level_hopper_two": {
+        "name": "Pārtikas līmenis trauks 2"
+      }
+    },
+    "button": {
+      "reset_filter": {
+        "name": "Atiestatīt filtru"
+      },
+      "reset_desiccant": {
+        "name": "Atjaunot žāvētāju"
+      },
+      "cancel_manual_feed": {
+        "name": "Atcelt manuālo barošanu"
+      },
+      "call_pet": {
+        "name": "Zvans mājdzīvniekam"
+      },
+      "start_cleaning": {
+        "name": "Sākt/Turpināt tīrīšanu"
+      },
+      "pause_cleaning": {
+        "name": "Apturēt tīrīšanu"
+      },
+      "odor_removal": {
+        "name": "Smaku noņemšana"
+      },
+      "reset_deodorizer": {
+        "name": "Atiestatīt dezodorantu"
+      },
+      "reset_pura_air_liquid": {
+        "name": "Atiestatīt Pura gaisa šķidrumu"
+      },
+      "n50_reset": {
+        "name": "Atiestatīt N50 smaržu noņēmēju"
+      },
+      "light_on": {
+        "name": "Ieslēgt gaismu"
+      },
+      "start_maintenance": {
+        "name": "Sākt apkopes režīmu"
+      },
+      "exit_maintenance": {
+        "name": "Iziet no apkopes režīma"
+      },
+      "pause_exit_maintenance": {
+        "name": "Apturēt iziešanu no apkopes režīma"
+      },
+      "resume_exit_maintenance": {
+        "name": "Iziet no apkopes režīma"
+      },
+      "dump_litter": {
+        "name": "Izmest pakaišus"
+      },
+      "pause_dump_litter": {
+        "name": "Apstādināt pakaišu izmešanu"
+      },
+      "resume_dump_litter": {
+        "name": "Atkārtoti sākt pakaišu izmešanu"
+      },
+      "food_replenished": {
+        "name": "Pārtika atjaunota"
+      },
+      "start_cal": {
+        "name": "Sākt kalibrēšanu"
+      },
+      "stop_cal": {
+        "name": "Apturēt kalibrēšanu"
+      }
+    },
+    "fan": {
+      "purifier": {
+        "name": "Tīrītājs",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "auto": "Auto",
+              "silent": "Kluss",
+              "standard": "Standarta",
+              "strong": "Spēcīgs"
+            }
           }
         }
       }
     },
-    "entity": {
-      "binary_sensor": {
-        "water_level": {
-          "name": "Water level"
-        },
-        "food_level": {
-          "name": "Food level"
-        },
-        "battery_installed": {
-          "name": "Battery installed"
-        },
-        "battery": {
-          "name": "Battery"
-        },
-        "wastebin": {
-          "name": "Wastebin"
-        },
-        "litter": {
-          "name": "Litter"
-        },
-        "deodorizer": {
-          "name": "Deodorizer"
-        },
-        "manually_paused": {
-          "name": "Manually paused"
-        },
-        "pura_air_liquid": {
-          "name": "Pura Air liquid"
-        },
-        "food_level_hopper_one": {
-          "name": "Food level hopper 1"
-        },
-        "food_level_hopper_two": {
-          "name": "Food level hopper 2"
+    "number": {
+      "set_weight": {
+        "name": "Iestatīt svaru"
+      },
+      "surplus": {
+        "name": "Pārpalikums"
+      },
+      "volume": {
+        "name": "Tilpums"
+      },
+      "manual_feed": {
+        "name": "Manuāla barošana"
+      },
+      "cleaning_delay": {
+        "name": "Tīrīšanas aizkave"
+      },
+      "min_eating_duration": {
+        "name": "Minimālais ēšanas ilgums"
+      }
+    },
+    "select": {
+      "light_brightness": {
+        "name": "Gaismas spilgtums",
+        "state": {
+          "low": "Zems",
+          "medium": "Vidējs",
+          "high": "Augsts"
         }
       },
-      "button": {
-        "reset_filter": {
-          "name": "Reset filter"
-        },
-        "reset_desiccant": {
-          "name": "Reset desiccant"
-        },
-        "cancel_manual_feed": {
-          "name": "Cancel manual feed"
-        },
-        "call_pet": {
-          "name": "Call pet"
-        },
-        "start_cleaning": {
-          "name": "Start/Resume cleaning"
-        },
-        "pause_cleaning": {
-          "name": "Pause cleaning"
-        },
-        "odor_removal": {
-          "name": "Odor removal"
-        },
-        "reset_deodorizer": {
-          "name": "Reset deodorizer"
-        },
-        "reset_pura_air_liquid": {
-          "name": "Reset Pura Air liquid"
-        },
-        "n50_reset": {
-          "name": "Reset N50 odor eliminator"
-        },
-        "light_on": {
-          "name": "Turn light ON"
-        },
-        "start_maintenance": {
-          "name": "Start maintenance mode"
-        },
-        "exit_maintenance": {
-          "name": "Exit maintenance mode"
-        },
-        "pause_exit_maintenance": {
-          "name": "Pause exiting maintenance mode"
-        },
-        "resume_exit_maintenance": {
-          "name": "Resume exiting maintenance mode"
-        },
-        "dump_litter": {
-          "name": "Dump litter"
-        },
-        "pause_dump_litter": {
-          "name": "Pause litter dumping"
-        },
-        "resume_dump_litter": {
-          "name": "Resume litter dumping"
-        },
-        "food_replenished": {
-          "name": "Food replenished"
-        },
-        "start_cal": {
-          "name": "Start calibration"
-        },
-        "stop_cal": {
-          "name": "Stop calibration"
+      "mode": {
+        "name": "Režīms",
+        "state": {
+          "normal": "Normāls",
+          "smart": "Gudrs"
         }
       },
-      "fan": {
-        "purifier": {
-          "name": "Purifier",
-          "state_attributes": {
-            "preset_mode": {
-              "state": {
-                "auto": "Auto",
-                "silent": "Silent",
-                "standard": "Standard",
-                "strong": "Strong"
-              }
+      "manual_feed": {
+        "name": "Manuāla barošana"
+      },
+      "sound": {
+        "name": "Skaņa"
+      },
+      "cleaning_interval": {
+        "name": "Tīrīšanas intervāls"
+      },
+      "litter_type": {
+        "name": "Pakaišu veids",
+        "state": {
+          "bentonite": "Bentonīts",
+          "tofu": "Tofu",
+          "mixed": "Jaukts"
+        }
+      }
+    },
+    "sensor": {
+      "energy_usage": {
+        "name": "Enerģijas patēriņš"
+      },
+      "last_data_update": {
+        "name": "Pēdējā datu atjaunināšana"
+      },
+      "filter": {
+        "name": "Filtrs"
+      },
+      "purified_water_today": {
+        "name": "Ūdens attīrīts šodien"
+      },
+      "feeder_status": {
+        "name": "Statuss",
+        "state": {
+          "offline": "Bezsaistē",
+          "normal": "Normāls",
+          "on_batteries": "Uz akumulatora"
+        }
+      },
+      "desiccant_days_remaining": {
+        "name": "Sausinātāja atlikušās dienas"
+      },
+      "battery_status": {
+        "name": "Baterijas statuss",
+        "state": {
+          "normal": "Normāls",
+          "low": "Zems"
+        }
+      },
+      "dispensed": {
+        "name": "Izdalīts"
+      },
+      "planned": {
+        "name": "Plānots"
+      },
+      "planned_dispensed": {
+        "name": "Plānotais izdalīts"
+      },
+      "manually_dispensed": {
+        "name": "Manuāli izdots"
+      },
+      "times_dispensed": {
+        "name": "Reizes izdalītas"
+      },
+      "rssi": {
+        "name": "RSSI"
+      },
+      "amount_eaten": {
+        "name": "Daudzums ēsts"
+      },
+      "times_eaten": {
+        "name": "Reizes ēsts"
+      },
+      "food_in_bowl": {
+        "name": "Pārtika bļodā"
+      },
+      "error": {
+        "name": "Kļūda",
+        "state": {
+          "no_error": "Nav kļūdas"
+        }
+      },
+      "deodorizer_level": {
+        "name": "Dezodoranta līmenis"
+      },
+      "litter_level": {
+        "name": "Atkritumu līmenis"
+      },
+      "litter_weight": {
+        "name": "Svara atkritumi"
+      },
+      "times_used": {
+        "name": " Reizes izmantotas"
+      },
+      "average_use": {
+        "name": "Vidējais lietojums"
+      },
+      "total_use": {
+        "name": "Kopējais lietojums"
+      },
+      "last_used_by": {
+        "name": "Pēdējo reizi izmantots",
+        "state": {
+          "no_record_yet": "Nav vēl ieraksts.",
+          "unknown_pet": "Nezināms mājdzīvnieks"
+        }
+      },
+      "last_event": {
+        "name": "Pēdējais notikums",
+        "state": {
+          "no_events_yet": "Vēl nav notikumu",
+          "event_type_unknown": "Notikuma tips nezināms",
+          "cleaning_completed": "Tīrīšana pabeigta",
+          "dumping_over": "Izmests",
+          "reset_over": "Atiestatīts",
+          "spray_over": "Izmidzināts",
+          "pet_out": "Mājdzivnieks ārā",
+          "auto_cleaning_completed": "Auto tīrīšana pabeigta",
+          "periodic_cleaning_completed": "Periodiskā tīrīšana pabeigta",
+          "manual_cleaning_completed": "Manuāla tīrīšana pabeigta",
+          "auto_cleaning_terminated": "Automātiskā tīrīšana pārtraukta",
+          "periodic_cleaning_terminated": "Periodiska tīrīšana pārtraukta",
+          "manual_cleaning_terminated": "Manuālā tīrīšana pārtraukta",
+          "auto_cleaning_failed_full": "Automātiskā tīrīšana neizdevās, atkritumu tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "auto_cleaning_failed_hall_l": "Automātiskā tīrīšanas kļūme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet",
+          "auto_cleaning_failed_hall_t": "Automātiskā tīrīšanas kļūme, kaķu tualetes augšējais kārbas vāks nav pareizi novietots, lūdzu, pārbaudiet",
+          "scheduled_cleaning_failed_full": "Ieplānotā tīrīšana neizdevās, atkritumu savākšanas tvertne ir pilna, lūdzu iztukšojiet pēc iespējas ātrāk.",
+          "scheduled_cleaning_failed_hall_l": "Plānotā tīrīšanas neveiksme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet",
+          "scheduled_cleaning_failed_hall_t": "Plānotā tīrīšanas kļūme, kastes augšējās virsmas vāks nav pareizi nostiprināts, lūdzu, pārbaudiet",
+          "manual_cleaning_failed_full": "Manuālā tīrīšana neizdevās, atkritumu savākšanas kaste ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "manual_cleaning_failed_hall_l": "Manuālā tīrīšanas kļūme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet.",
+          "manual_cleaning_failed_hall_t": "Manuālās tīrīšanas kļūme, kaķu tualetes augšējā kārbas vāks nav pareizi novietots, lūdzu pārbaudiet",
+          "auto_cleaning_canceled": "Automātiskā tīrīšana atcelta, ierīce darbojas",
+          "periodic_cleaning_canceled": "Periodiska tīrīšana atcelta, ierīce darbojas",
+          "manual_cleaning_canceled": "Manuālā tīrīšana atcelta, ierīce darbojas",
+          "auto_cleaning_canceled_kitten": "Kaķēnu režīms ir ieslēgts, automātiskā tīrīšana ir atcelta.",
+          "periodic_cleaning_canceled_kitten": "Kaķēnu režīms ir ieslēgts, periodiska tīrīšana ir atcelta.",
+          "litter_empty_completed": "Kaķu tualetes maisījums tika iztukšots",
+          "litter_empty_terminated": "Kaķu tualetes maisījuma iztukšošana atcelta",
+          "litter_empty_failed_full": "Neizdevās iztukšot kaķu pakaišus, atkritumu tvertne ir pilna, lūdzu, iztukšojiet savlaicīgi.",
+          "litter_empty_failed_hall_l": "Kaķu tualetes tīrīšanas kļūda, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet.",
+          "litter_empty_failed_hall_t": "Kaķu tualetes tīrīšanas kļūda, tualetes vāks nav pareizi novietots, lūdzu, pārbaudiet",
+          "reset_completed": "Ierīces atiestatīšana pabeigta",
+          "reset_terminated": "Ierīces atiestatīšana atcelta",
+          "reset_failed_full": "Ierīces atiestatīšana neizdevās, atkritumu tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "reset_failed_hall_l": "Ierīces atiestatīšanas kļūme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet",
+          "reset_failed_hall_t": "Ierīces atiestatīšanas kļūme, kaķu tualetes vāks nav pareizi novietots, lūdzu, pārbaudiet.",
+          "deodorant_finished": "Gaisa atsvaidzinātājs ir beidzies",
+          "periodic_odor_completed": "Periodiskās smaku noņemšanas pabeigtas",
+          "manual_odor_completed": "Manuāla smaku noņemšana pabeigta",
+          "deodorant_finished_liquid_lack": "Gaisa atsvaidzinātājs ir beidzies, nav pietiekami daudz gaisa atsvaidzinātāja šķīduma, lūdzu, laikus atjauniniet",
+          "periodic_odor_completed_liquid_lack": "Periodiska smakas noņemšana pabeigta, nav pietiekami gaisa atsvaidzinātāja šķidruma, lūdzu, laikus atjauniniet",
+          "manual_odor_completed_liquid_lack": "Manuāla smaku noņemšana pabeigta, nav pietiekami gaisa atsvaidzinātāja šķidruma, lūdzu, laikus atjauniniet",
+          "auto_odor_failed": "Automātiskās smakas noņemšana neizdevās, smakas noņēmēja kļūda",
+          "periodic_odor_failed": "Periodiska smakas noņemšanas neveiksme, smakas noņēmēja darbības traucējumi",
+          "manual_odor_failed": "Manuāla smakas noņemšanas neveiksme, smakas noņēmēja darbības traucējumi"
+        },
+        "state_attributes": {
+          "sub_events": {
+            "state": {
+              "no_events_yet": "Vēl nav notikumu",
+              "event_type_unknown": "Nezināma notikuma veids",
+              "cleaning_completed": "Tīrīšana pabeigta",
+              "dumping_over": "Iztukšošana pabeigta",
+              "reset_over": "Atiestatīšana pabeigta",
+              "spray_over": "Atsvaidzināšana pabeigta",
+              "pet_out": "Mājdzivnieks ārā",
+              "auto_cleaning_completed": "Automātiskā tīrīšana pabeigta",
+              "periodic_cleaning_completed": "Periodiskā tīrīšana pabeigta",
+              "manual_cleaning_completed": "Manuālā tīrīšana pabeigta",
+              "auto_cleaning_terminated": "Automātiskā tīrīšana pārtraukta",
+              "periodic_cleaning_terminated": "Periodiskā tīrīšana pārtraukta",
+              "manual_cleaning_terminated": "Manuāla tīrīšana pārtraukta",
+              "auto_cleaning_failed_full": "Automātiskā tīrīšana neizdevās, atkritumu tvertne ir pilna, lūdzu, iztukšojiet savlaicīgi.",
+              "auto_cleaning_failed_hall_l": "Automātiskās tīrīšanas kļūme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet.",
+              "auto_cleaning_failed_hall_t": "Automātiskā tīrīšanas kļūme, kaķu tualetes augšējās kārbas vāks nav pareizi nostiprināts, lūdzu, pārbaudiet",
+              "scheduled_cleaning_failed_full": "Plānotā tīrīšana neizdevās, atkritumu savākšanas konteiners ir pilns, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+              "scheduled_cleaning_failed_hall_l": "Plānotā tīrīšanas neveiksme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet",
+              "scheduled_cleaning_failed_hall_t": "Plānotā tīrīšanas neveiksme, kaķu tualetes augšējās virsmas vāks nav pareizi nostiprināts, lūdzu pārbaudiet.",
+              "manual_cleaning_failed_full": "Rokas tīrīšana neizdevās, atkritumu tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+              "manual_cleaning_failed_hall_l": "Manuālā tīrīšanas neveiksme, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet.",
+              "manual_cleaning_failed_hall_t": "Manuāla tīrīšanas kļūme, kaķu tualetes augšējā kārbas vāka nav pareizi novietota, lūdzu, pārbaudiet",
+              "auto_cleaning_canceled": "Automātiskā tīrīšana atcelta, ierīce darbojas.",
+              "periodic_cleaning_canceled": "Periodiskā tīrīšana atcelta, ierīce darbojas",
+              "manual_cleaning_canceled": "Manuālā tīrīšana atcelta, ierīce darbojas",
+              "auto_cleaning_canceled_kitten": "Kaķēna režīms ir ieslēgts, automātiskā tīrīšana ir atcelta.",
+              "periodic_cleaning_canceled_kitten": "Kaķēna režīms ir ieslēgts, periodiska tīrīšana ir atcelta.",
+              "litter_empty_completed": "Pakaišu iztukšošana pabeigta",
+              "litter_empty_terminated": "Pakaišu iztukšošana atcelta",
+              "litter_empty_failed_full": "Pakaišu iztukšošana neizdevās, atkritumu tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+              "litter_empty_failed_hall_l": "Pakaišu iztukšošanas kļūda, cilindrs nav pareizi nostiprināts, lūdzu, pārbaudiet.",
+              "litter_empty_failed_hall_t": "Pakaišu iztukšošanas kļūda, tualetes vāks nav pareizi novietots, lūdzu, pārbaudiet",
+              "reset_completed": "Iestatījuma atiestatīšana pabeigta",
+              "reset_terminated": "Ierīces atiestatīšana atcelta",
+              "reset_failed_full": "Ierīces atiestatīšana neizdevās, atkritumu tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+              "reset_failed_hall_l": "Ierīces atiestatīšanas kļūme, cilindrs nav pareizi nostiprināts, pārbaudiet.",
+              "reset_failed_hall_t": "Ierīces atiestatīšanas kļūme, tualetes vāks nav pareizi novietots, pārbaudiet",
+              "deodorant_finished": "Gaisa atsvaidzinātājs ir beidzies",
+              "periodic_odor_completed": "Periodiskā smaku noņemšana pabeigta",
+              "manual_odor_completed": "Manuāla smaku noņemšana pabeigta",
+              "deodorant_finished_liquid_lack": "Gaisa atsvaidzinātājs ir beidzies, nav pietiekami šķidruma, pārbaudiet.",
+              "periodic_odor_completed_liquid_lack": "Periodiska smakas noņemšana pabeigta, nav pietiekami attīrīšanas šķidruma.",
+              "manual_odor_completed_liquid_lack": "Manuāla smaku noņemšana ir pabeigta, nav pietiekami attīrīšanas šķidruma.",
+              "auto_odor_failed": "Automātiskā smakas noņemšana neizdevās, smaku noņēmēja kļūda",
+              "periodic_odor_failed": "Periodiska smaku noņemšanas neveiksme, smaku noņēmēja darbības traucējumi",
+              "manual_odor_failed": "Manuāla smakas noņemšanas neveiksme, smaku noņēmēja darbības traucējumi",
+              "no_sub_events": "Nav saistītu apakšnotikumu"
             }
           }
         }
       },
-      "number": {
-        "set_weight": {
-          "name": "Set weight"
-        },
-        "surplus": {
-          "name": "Surplus"
-        },
-        "volume": {
-          "name": "Volume"
-        },
-        "manual_feed": {
-          "name": "Manual feed"
-        },
-        "cleaning_delay": {
-          "name": "Cleaning delay"
-        },
-        "min_eating_duration": {
-          "name": "Minimum eating duration"
-        }
+      "latest_weight": {
+        "name": "Pēdējais svars"
       },
-      "select": {
-        "light_brightness": {
-          "name": "Light brightness",
-          "state": {
-            "low": "Low",
-            "medium": "Medium",
-            "high": "High"
-          }
-        },
-        "mode": {
-          "name": "Mode",
-          "state": {
-            "normal": "Normal",
-            "smart": "Smart"
-          }
-        },
-        "manual_feed": {
-          "name": "Manual feed"
-        },
-        "sound": {
-          "name": "Sound"
-        },
-        "cleaning_interval": {
-          "name": "Cleaning interval"
-        },
-        "litter_type": {
-          "name": "Litter type",
-          "state": {
-            "bentonite": "Bentonite",
-            "tofu": "Tofu",
-            "mixed": "Mixed"
-          }
-        }
+      "last_use_duration": {
+        "name": "Pēdējās lietošanas ilgums"
       },
-      "sensor": {
-        "energy_usage": {
-          "name": "Energy usage"
+      "pura_air_battery": {
+        "name": "Pura Air baterija"
+      },
+      "pura_air_liquid": {
+        "name": "Pura Air šķidrums"
+      },
+      "n50_odor_eliminator": {
+        "name": "N50 smaržas noņēmējs"
+      },
+      "max_last_event": {
+        "name": "Pēdējais notikums",
+        "state": {
+          "no_events_yet": "Vēl nav notikumu",
+          "event_type_unknown": "Nezināms notikuma veids",
+          "cleaning_completed": "Tīrīšana pabeigta",
+          "dumping_over": "Iztukšošana pabeigta",
+          "reset_over": "Atiestatīšana pabeigta",
+          "spray_over": "Izsmidzināšana beigusies",
+          "light_over": "Gaisma virs",
+          "pet_out": "Mājdzivnieks ārā",
+          "auto_cleaning_completed": "Automātiskā tīrīšana pabeigta",
+          "periodic_cleaning_completed": "Periodiska tīrīšana pabeigta",
+          "manual_cleaning_completed": "Manuāla tīrīšana pabeigta",
+          "auto_cleaning_terminated": "Automātiskā tīrīšana pārtraukta",
+          "periodic_cleaning_terminated": "Periodiskā tīrīšana pārtraukta",
+          "manual_cleaning_terminated": "Manuālā tīrīšana pārtraukta",
+          "auto_cleaning_failed_full": "Automātiskā tīrīšana neizdevās, atkritumu kolekcijas tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "auto_cleaning_failed_hall_t": "Automātiskā tīrīšanas kļūme, kaķu tualetes augšējās virsmas vāks nav pareizi novietots, lūdzu, pārbaudiet",
+          "auto_cleaning_failed_falldown": "Automātiskā tīrīšanas kļūme, kaķu tualete ir nokritusi, lūdzu, pārbaudiet.",
+          "auto_cleaning_failed_other": "Automātiskā tīrīšanas kļūme, ierīces darbības traucējumi, lūdzu, pārbaudiet.",
+          "scheduled_cleaning_failed_full": "Plānotā tīrīšana neizdevās, atkritumu savākšanas konteiners ir pilns, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "scheduled_cleaning_failed_hall_t": "Plānotā tīrīšanas kļūme, kaubas kastes augšējais vāks nav pareizi novietots, lūdzu, pārbaudiet",
+          "scheduled_cleaning_failed_falldown": "Plānotā tīrīšanas kļūme, kaķu kastīte ir nokritusi, lūdzu, pārbaudiet.",
+          "scheduled_cleaning_failed_other": "Plānotā tīrīšanas kļūme, ierīces darbības traucējumi, lūdzu, pārbaudiet.",
+          "manual_cleaning_failed_full": "Rokas tīrīšana neizdevās, atkritumu kolekcijas tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "manual_cleaning_failed_hall_t": "Manuāla tīrīšanas kļūme, kaķu tualetes augšējā kārbas vāka nav pareizi novietots, lūdzu pārbaudiet",
+          "manual_cleaning_failed_falldown": "Neveiksme manuālā tīrīšana, kaķu tualete ir nokritusi, lūdzu, pārbaudiet.",
+          "manual_cleaning_failed_other": "Manuāla tīrīšanas kļūme, ierīces traucējumi, lūdzu, pārbaudiet.",
+          "auto_cleaning_canceled": "Automātiskā tīrīšana atcelta, ierīce darbojas",
+          "periodic_cleaning_canceled": "Periodiskā tīrīšana atcelta, ierīce darbojas",
+          "manual_cleaning_canceled": "Manuāla tīrīšana atcelta, ierīce darbojas",
+          "auto_cleaning_failed_maintenance": "Automātiskā tīrīšana neizdevās, ierīce ir uzturēšanas režīmā.",
+          "periodic_cleaning_failed_maintenance": "Periodiska tīrīšana neizdevās, ierīce ir uzturēšanas režīmā.",
+          "auto_cleaning_canceled_kitten": "Kucēnu režīms ir ieslēgts, automātiskā tīrīšana ir atcelta.",
+          "periodic_cleaning_canceled_kitten": "Kitten režīms ir ieslēgts, periodiska tīrīšana ir atcelta.",
+          "litter_empty_completed": "Kaķu tualetes maisījums iztukšots pabeigts",
+          "litter_empty_terminated": "Kaķu tualetes maisījums tika iztukšots",
+          "litter_empty_failed_full": "Kaķu lopu tīrīšana neizdevās, atkritumu kolekcijas tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "litter_empty_failed_hall_t": "Kaķu tualetes tīrīšanas neveiksme, tualetes vara vāks nav pareizi novietots, lūdzu, pārbaudiet",
+          "litter_empty_failed_falldown": "Kaķu tualetes tīrīšanas neveiksme, tualetes kaste ir nokritusi, lūdzu, pārbaudiet",
+          "litter_empty_failed_other": "Kaķu tualetes tīrīšanas kļūme, ierīces darbības traucējumi, lūdzu, pārbaudiet.",
+          "reset_completed": "Iestatījumu atiestatīšana pabeigta",
+          "reset_terminated": "Ierīces atiestatīšana pabeigta",
+          "reset_failed_full": "Ierīces atiestatīšana neizdevās, atkritumu kolekcijas tvertne ir pilna, lūdzu, iztukšojiet to pēc iespējas ātrāk.",
+          "reset_failed_hall_t": "Ierīces atiestatīšanas kļūme, kaķu tualetes vara vāks nav pareizi novietots, lūdzu, pārbaudiet.",
+          "reset_failed_falldown": "Iekārtas atiestatīšanas kļūme, kaķu tualete ir nokritusi, lūdzu, pārbaudiet.",
+          "reset_failed_other": "Ierīces atiestatīšanas kļūme, ierīces darbības traucējumi, lūdzu, pārbaudiet.",
+          "maintenance_mode": "Uzturēšanas režīms",
+          "deodorant_finished": "Deodorants beidzies",
+          "periodic_odor_completed": "Periodiskā smaku noņemšana pabeigta",
+          "manual_odor_completed": "Manuāla smaku noņemšana pabeigta",
+          "auto_odor_terminated": "Automātiskā smaržas noņemšana ir pārtraukta.",
+          "periodic_odor_terminated": "Periodiskā smaku noņemšana pārtraukta.",
+          "manual_odor_terminated": "Manuālā smaku noņemšana ir pabeigta.",
+          "auto_odor_failed": "Automātiska smaržas noņemšana neizdevās, smaržas noņēmēja kļūda",
+          "periodic_odor_failed": "Periodiskas smaržas noņemšanas neveiksme, smaržas noņēmēja traucējumi",
+          "manual_odor_failed": "Neveiksmīga manuālā smaku noņemšana, smaku noņēmēja darbības traucējumi",
+          "auto_odor_canceled": "Automātiskās smaržas noņemšana ir atcelta, ierīce darbojas.",
+          "periodic_odor_canceled": "Periodiska smaku noņemšana atcelta. Kaķu tualete darbojas.",
+          "manual_odor_canceled": "Atcēlts manuāla smaržas noņemšana. Kaķu tualete darbojas.",
+          "auto_odor_failed_device": "Automātiskās smaržas noņemšana neizdevās, nav pieslēgts neviens viedais aerosols.",
+          "periodic_odor_failed_device": "Periodiskā smaržas noņemšana neizdevās. Smaržas noņemšanas ierīce atvienota.",
+          "manual_odor_failed_device": "Neizdevās manuāli noņemt smaku. Smaku noņemšanas ierīce atvienota.",
+          "auto_odor_failed_batt": "Automātiskās smaržas noņemšana neizdevās, lūdzu, apstipriniet, ka inteliģentā aerosola baterija ir pietiekami uzlādēta.",
+          "periodic_odor_failed_batt": "Periodiskā smaku noņemšana neizdevās. Lūdzu, pārliecinieties, vai Odor Removal Device ir pietiekami daudz baterijas.",
+          "manual_odor_failed_batt": "Neizdevās manuāli noņemt smaku. Lūdzu, pārliecinieties, vai Odor Removal Device ir pietiekami daudz baterijas.",
+          "auto_odor_failed_low_batt": "Automātiskā smaku noņemšana neizdevās, akumulators ir nolietojies.",
+          "periodic_odor_failed_low_batt": "Periodiska smaku noņemšana neizdevās. Smaku noņemšanas ierīces baterijas lādiņš ir zems.",
+          "manual_odor_failed_low_batt": "Neizdevās manuāli noņemt smaku. Akumulatora lādēšana Odor Removal Device zemā līmenī.",
+          "cat_stopped_odor": "Tavs kaķis izmanto kaķu tualeti, dezodorizācija ir atcelta.",
+          "light_on": "Gaisma ir IESLĒGTA",
+          "light_already_on": "Gaisma ir ieslēgta. Nav nepieciešams ieslēgt atkal.",
+          "light_malfunc": "Neizdodas ieslēgt gaismu. Ierīces darbības traucējumi, lūdzu, pārbaudiet.",
+          "light_no_device": "Neizdodas ieslēgt gaismu. Lūdzu, vispirms iesiet smaržas noņemšanas ierīci.",
+          "light_batt_cap": "Neizdodas ieslēgt gaismu. Lūdzu, pārbaudiet smaržas noņemšanas ierīces akumulatora jaudu.",
+          "light_low_batt": "Neizdodas ieslēgt gaismu. Zema baterijas jauda smaržas noņemšanas ierīcei."
         },
-        "last_data_update": {
-          "name": "Last data update"
-        },
-        "filter": {
-          "name": "Filter"
-        },
-        "purified_water_today": {
-          "name": "Purified water today"
-        },
-        "feeder_status": {
-          "name": "Status",
-          "state": {
-            "offline": "Offline",
-            "normal": "Normal",
-            "on_batteries": "On Batteries"
-          }
-        },
-        "desiccant_days_remaining": {
-          "name": "Desiccant days remaining"
-        },
-        "battery_status": {
-          "name": "Battery status",
-          "state": {
-            "normal": "Normal",
-            "low": "Low"
-          }
-        },
-        "dispensed": {
-          "name": "Dispensed"
-        },
-        "planned": {
-          "name": "Planned"
-        },
-        "planned_dispensed": {
-          "name": "Planned dispensed"
-        },
-        "manually_dispensed": {
-          "name": "Manually dispensed"
-        },
-        "times_dispensed": {
-          "name": "Times dispensed"
-        },
-        "rssi": {
-          "name": "RSSI"
-        },
-        "amount_eaten": {
-          "name": "Amount eaten"
-        },
-        "times_eaten": {
-          "name": "Times eaten"
-        },
-        "food_in_bowl": {
-          "name": "Food in bowl"
-        },
-        "error": {
-          "name": "Error",
-          "state": {
-            "no_error": "No Error"
-          }
-        },
-        "deodorizer_level": {
-          "name": "Deodorizer level"
-        },
-        "litter_level": {
-          "name": "Litter level"
-        },
-        "litter_weight": {
-          "name": "Litter weight"
-        },
-        "times_used": {
-          "name": "Times used"
-        },
-        "average_use": {
-          "name": "Average use"
-        },
-        "total_use": {
-          "name": "Total use"
-        },
-        "last_used_by": {
-          "name": "Last used by",
-          "state": {
-            "no_record_yet": "No record yet",
-            "unknown_pet": "Unknown pet"
-          }
-        },
-        "last_event": {
-          "name": "Last event",
-          "state": {
-            "no_events_yet": "No events yet",
-            "event_type_unknown": "Event type unknown",
-            "cleaning_completed": "Cleaning completed",
-            "dumping_over": "Dumping Over",
-            "reset_over": "Reset over",
-            "spray_over": "Spray over",
-            "pet_out": "Pet out",
-            "auto_cleaning_completed": "Auto cleaning completed",
-            "periodic_cleaning_completed": "Periodic cleaning completed",
-            "manual_cleaning_completed": "Manual cleaning completed",
-            "auto_cleaning_terminated": "Automatic cleaning terminated",
-            "periodic_cleaning_terminated": "Periodic cleaning terminated",
-            "manual_cleaning_terminated": "Manual cleaning terminated",
-            "auto_cleaning_failed_full": "Automatic cleaning failed, waste collection bin is full, please empty promptly",
-            "auto_cleaning_failed_hall_l": "Automatic cleaning failure, the cylinder is not properly locked in place, please check",
-            "auto_cleaning_failed_hall_t": "Automatic cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-            "scheduled_cleaning_failed_full": "Scheduled cleaning failed, waste collection bin is full, please empty promptly",
-            "scheduled_cleaning_failed_hall_l": "Scheduled cleaning failure, the cylinder is not properly locked in place, please check",
-            "scheduled_cleaning_failed_hall_t": "Scheduled cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-            "manual_cleaning_failed_full": "Manual cleaning failed, waste collection bin is full, please empty promptly",
-            "manual_cleaning_failed_hall_l": "Manual cleaning failure, the cylinder is not properly locked in place, please check",
-            "manual_cleaning_failed_hall_t": "Manual cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-            "auto_cleaning_canceled": "Automatic cleaning canceled, device in operation",
-            "periodic_cleaning_canceled": "Periodic cleaning canceled, device in operation",
-            "manual_cleaning_canceled": "Manual cleaning canceled, device in operation",
-            "auto_cleaning_canceled_kitten": "Kitten mode is enabled, auto cleaning is canceled",
-            "periodic_cleaning_canceled_kitten": "Kitten mode is enabled, periodically cleaning is canceled",
-            "litter_empty_completed": "Cat litter empty completed",
-            "litter_empty_terminated": "Cat litter empty terminated",
-            "litter_empty_failed_full": "Cat litter empty failed, waste collection bin is full, please empty promptly",
-            "litter_empty_failed_hall_l": "Cat litter empty failure, the cylinder is not properly locked in place, please check",
-            "litter_empty_failed_hall_t": "Cat litter empty failure, the litter box's cupper cover is not placed properly, please check",
-            "reset_completed": "Device reset completed",
-            "reset_terminated": "Device reset terminated",
-            "reset_failed_full": "Device reset failed, waste collection bin is full, please empty promptly",
-            "reset_failed_hall_l": "Device reset failure, the cylinder is not properly locked in place, please check",
-            "reset_failed_hall_t": "Device reset failure, the litter box's cupper cover is not placed properly, please check",
-            "deodorant_finished": "Deodorant finished",
-            "periodic_odor_completed": "Periodic odor removal completed",
-            "manual_odor_completed": "Manual odor removal completed",
-            "deodorant_finished_liquid_lack": "Deodorant finished, not enough purifying liquid, please refill in time",
-            "periodic_odor_completed_liquid_lack": "Periodic odor removal completed, not enough purifying liquid, please refill in time",
-            "manual_odor_completed_liquid_lack": "Manual odor removal completed, not enough purifying liquid, please refill in time",
-            "auto_odor_failed": "Automatic odor removal failed, odor eliminator error",
-            "periodic_odor_failed": "Periodic odor removal failure, odor eliminator malfunction",
-            "manual_odor_failed": "Manual odor removal failure, odor eliminator malfunction"
-          },
-          "state_attributes": {
-            "sub_events": {
-              "state": {
-                "no_events_yet": "No events yet",
-                "event_type_unknown": "Event type unknown",
-                "cleaning_completed": "Cleaning completed",
-                "dumping_over": "Dumping Over",
-                "reset_over": "Reset over",
-                "spray_over": "Spray over",
-                "pet_out": "Pet out",
-                "auto_cleaning_completed": "Auto cleaning completed",
-                "periodic_cleaning_completed": "Periodic cleaning completed",
-                "manual_cleaning_completed": "Manual cleaning completed",
-                "auto_cleaning_terminated": "Automatic cleaning terminated",
-                "periodic_cleaning_terminated": "Periodic cleaning terminated",
-                "manual_cleaning_terminated": "Manual cleaning terminated",
-                "auto_cleaning_failed_full": "Automatic cleaning failed, waste collection bin is full, please empty promptly",
-                "auto_cleaning_failed_hall_l": "Automatic cleaning failure, the cylinder is not properly locked in place, please check",
-                "auto_cleaning_failed_hall_t": "Automatic cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-                "scheduled_cleaning_failed_full": "Scheduled cleaning failed, waste collection bin is full, please empty promptly",
-                "scheduled_cleaning_failed_hall_l": "Scheduled cleaning failure, the cylinder is not properly locked in place, please check",
-                "scheduled_cleaning_failed_hall_t": "Scheduled cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-                "manual_cleaning_failed_full": "Manual cleaning failed, waste collection bin is full, please empty promptly",
-                "manual_cleaning_failed_hall_l": "Manual cleaning failure, the cylinder is not properly locked in place, please check",
-                "manual_cleaning_failed_hall_t": "Manual cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-                "auto_cleaning_canceled": "Automatic cleaning canceled, device in operation",
-                "periodic_cleaning_canceled": "Periodic cleaning canceled, device in operation",
-                "manual_cleaning_canceled": "Manual cleaning canceled, device in operation",
-                "auto_cleaning_canceled_kitten": "Kitten mode is enabled, auto cleaning is canceled",
-                "periodic_cleaning_canceled_kitten": "Kitten mode is enabled, periodically cleaning is canceled",
-                "litter_empty_completed": "Cat litter empty completed",
-                "litter_empty_terminated": "Cat litter empty terminated",
-                "litter_empty_failed_full": "Cat litter empty failed, waste collection bin is full, please empty promptly",
-                "litter_empty_failed_hall_l": "Cat litter empty failure, the cylinder is not properly locked in place, please check",
-                "litter_empty_failed_hall_t": "Cat litter empty failure, the litter box's cupper cover is not placed properly, please check",
-                "reset_completed": "Device reset completed",
-                "reset_terminated": "Device reset terminated",
-                "reset_failed_full": "Device reset failed, waste collection bin is full, please empty promptly",
-                "reset_failed_hall_l": "Device reset failure, the cylinder is not properly locked in place, please check",
-                "reset_failed_hall_t": "Device reset failure, the litter box's cupper cover is not placed properly, please check",
-                "deodorant_finished": "Deodorant finished",
-                "periodic_odor_completed": "Periodic odor removal completed",
-                "manual_odor_completed": "Manual odor removal completed",
-                "deodorant_finished_liquid_lack": "Deodorant finished, not enough purifying liquid, please refill in time",
-                "periodic_odor_completed_liquid_lack": "Periodic odor removal completed, not enough purifying liquid, please refill in time",
-                "manual_odor_completed_liquid_lack": "Manual odor removal completed, not enough purifying liquid, please refill in time",
-                "auto_odor_failed": "Automatic odor removal failed, odor eliminator error",
-                "periodic_odor_failed": "Periodic odor removal failure, odor eliminator malfunction",
-                "manual_odor_failed": "Manual odor removal failure, odor eliminator malfunction",
-                "no_sub_events": "No associated sub events"
-              }
+        "state_attributes": {
+          "sub_events": {
+            "state": {
+              "no_events_yet": "Vēl nav notikumu",
+              "event_type_unknown": "Nezināms pasākuma veids",
+              "cleaning_completed": "Cleaning completed",
+              "dumping_over": "Dumping Over",
+              "reset_over": "Atiestatīt",
+              "spray_over": "Pārsprāgt",
+              "light_over": "Gaisma virs",
+              "pet_out": "Pet out",
+              "auto_cleaning_completed": "Auto cleaning completed",
+              "periodic_cleaning_completed": "Periodiskā tīrīšana pabeigta",
+              "manual_cleaning_completed": "Manual cleaning completed",
+              "auto_cleaning_terminated": "Automātiskā tīrīšana pārtraukta",
+              "periodic_cleaning_terminated": "Periodiskā tīrīšana pārtraukta",
+              "manual_cleaning_terminated": "Manuālā tīrīšana pārtraukta",
+              "auto_cleaning_failed_full": "Automātiskā tīrīšana neizdevās, atkritumu kolekcijas tvertne ir pilna, lūdzu, iztukšojiet savlaicīgi.",
+              "auto_cleaning_failed_hall_t": "Automātiskās tīrīšanas kļūme, kaķu tualetes augšējā vāka vāks nav pareizi novietots, lūdzu, pārbaudiet",
+              "auto_cleaning_failed_falldown": "Automātiskā tīrīšanas kļūme, kaķu tualete ir nokritusi, lūdzu pārbaudiet.",
+              "auto_cleaning_failed_other": "Automatic cleaning failure, device malfunction, please check.",
+              "scheduled_cleaning_failed_full": "Plānotā tīrīšana neizdevās, atkritumu savākšanas konteiners ir pilns, lūdzu, iztukšojiet to steidzami.",
+              "scheduled_cleaning_failed_hall_t": "Scheduled cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
+              "scheduled_cleaning_failed_falldown": "Scheduled cleaning failure, the litter box has been knocked down, please check.",
+              "scheduled_cleaning_failed_other": "Scheduled cleaning failure, device malfunction, please check.",
+              "manual_cleaning_failed_full": "Manual cleaning failed, waste collection bin is full, please empty promptly",
+              "manual_cleaning_failed_hall_t": "Manual cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
+              "manual_cleaning_failed_falldown": "Manual cleaning failure, the litter box has been knocked down, please check.",
+              "manual_cleaning_failed_other": "Manual cleaning failure, device malfunction, please check.",
+              "auto_cleaning_canceled": "Automatic cleaning canceled, device in operation",
+              "periodic_cleaning_canceled": "Periodic cleaning canceled, device in operation",
+              "manual_cleaning_canceled": "Manual cleaning canceled, device in operation",
+              "auto_cleaning_failed_maintenance": "Automatic cleaning failed, the device is in maintenance mode",
+              "periodic_cleaning_failed_maintenance": "Periodically cleaning failed, the device is in maintenance mode",
+              "auto_cleaning_canceled_kitten": "Kitten mode is enabled, auto cleaning is canceled",
+              "periodic_cleaning_canceled_kitten": "Kitten mode is enabled, periodically cleaning is canceled",
+              "litter_empty_completed": "Cat litter empty completed",
+              "litter_empty_terminated": "Cat litter empty terminated",
+              "litter_empty_failed_full": "Cat litter empty failed, waste collection bin is full, please empty promptly",
+              "litter_empty_failed_hall_t": "Cat litter empty failure, the litter box's cupper cover is not placed properly, please check",
+              "litter_empty_failed_falldown": "Cat litter empty failure, the litter box has been knocked down, please check",
+              "litter_empty_failed_other": "Cat litter empty failure, device malfunction, please check.",
+              "reset_completed": "Device reset completed",
+              "reset_terminated": "Device reset terminated",
+              "reset_failed_full": "Device reset failed, waste collection bin is full, please empty promptly",
+              "reset_failed_hall_t": "Device reset failure, the litter box's cupper cover is not placed properly, please check",
+              "reset_failed_falldown": "Device reset failure, the litter box has been knocked down, please check.",
+              "reset_failed_other": "Device reset failure, device malfunction, please check.",
+              "maintenance_mode": "Maintenance mode",
+              "deodorant_finished": "Deodorant finished",
+              "periodic_odor_completed": "Periodic odor removal completed",
+              "manual_odor_completed": "Manual odor removal completed",
+              "auto_odor_terminated": "Automatic odor removal has been terminated.",
+              "periodic_odor_terminated": "Periodic odor removal terminated.",
+              "manual_odor_terminated": "Manual odor removal terminated.",
+              "auto_odor_failed": "Automatic odor removal failed, odor eliminator error",
+              "periodic_odor_failed": "Periodic odor removal failure, odor eliminator malfunction",
+              "manual_odor_failed": "Manual odor removal failure, odor eliminator malfunction",
+              "auto_odor_canceled": "Automatic odor removal has been canceled, the device is running.",
+              "periodic_odor_canceled": "Periodic odor removal canceled. Litter Box is working.",
+              "manual_odor_canceled": "Manual odor removal canceled. Litter Box is working.",
+              "auto_odor_failed_device": "Automatic odor removal failed, no smart spray is connected.",
+              "periodic_odor_failed_device": "Periodic odor removal failed. Odor Removal Device disconnected.",
+              "manual_odor_failed_device": "Manual odor removal failed. Odor Removal Device disconnected.",
+              "auto_odor_failed_batt": "Automatic odor removal failed, please confirm that the battery of smart spray is sufficient.",
+              "periodic_odor_failed_batt": "Periodic odor removal failed. Please make sure the Odor Removal Device has sufficient battery.",
+              "manual_odor_failed_batt": "Manual odor removal failed. Please make sure the Odor Removal Device has sufficient battery.",
+              "auto_odor_failed_low_batt": "Automatic odor removal failed, battery is low.",
+              "periodic_odor_failed_low_batt": "Periodic odor removal failed. Odor Removal Device battery low.",
+              "manual_odor_failed_low_batt": "Manual odor removal failed. Odor Removal Device battery low.",
+              "cat_stopped_odor": "Your cat is using the litter box, deodorization has been canceled",
+              "light_on": "The light is ON",
+              "light_already_on": "The light is on. There is no need to turn on again.",
+              "light_malfunc": "Failing to turn on the light. Device malfunction, please check.",
+              "light_no_device": "Failing to turn on the light. Please bind the odor removal device first.",
+              "light_batt_cap": "Failing to turn on the light. Please check the battery capacity of the odor removal device.",
+              "light_low_batt": "Failing to turn on the light. Low battery capacity of odor removal device.",
+              "no_sub_events": "No associated sub events"
+
             }
           }
-        },
-        "latest_weight": {
-          "name": "Latest weight"
-        },
-        "last_use_duration": {
-          "name": "Last use duration"
-        },
-        "pura_air_battery": {
-          "name": "Pura Air battery"
-        },
-        "pura_air_liquid": {
-          "name": "Pura Air liquid"
-        },
-        "n50_odor_eliminator": {
-          "name": "N50 odor eliminator"
-        },
-        "max_last_event": {
-          "name": "Last event",
-          "state": {
-            "no_events_yet": "No events yet",
-            "event_type_unknown": "Event type unknown",
-            "cleaning_completed": "Cleaning completed",
-            "dumping_over": "Dumping Over",
-            "reset_over": "Reset over",
-            "spray_over": "Spray over",
-            "light_over": "Light over",
-            "pet_out": "Pet out",
-            "auto_cleaning_completed": "Auto cleaning completed",
-            "periodic_cleaning_completed": "Periodic cleaning completed",
-            "manual_cleaning_completed": "Manual cleaning completed",
-            "auto_cleaning_terminated": "Automatic cleaning terminated",
-            "periodic_cleaning_terminated": "Periodic cleaning terminated",
-            "manual_cleaning_terminated": "Manual cleaning terminated",
-            "auto_cleaning_failed_full": "Automatic cleaning failed, waste collection bin is full, please empty promptly",
-            "auto_cleaning_failed_hall_t": "Automatic cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-            "auto_cleaning_failed_falldown": "Automatic cleaning failure, the litter box has been knocked down, please check.",
-            "auto_cleaning_failed_other": "Automatic cleaning failure, device malfunction, please check.",
-            "scheduled_cleaning_failed_full": "Scheduled cleaning failed, waste collection bin is full, please empty promptly",
-            "scheduled_cleaning_failed_hall_t": "Scheduled cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-            "scheduled_cleaning_failed_falldown": "Scheduled cleaning failure, the litter box has been knocked down, please check.",
-            "scheduled_cleaning_failed_other": "Scheduled cleaning failure, device malfunction, please check.",
-            "manual_cleaning_failed_full": "Manual cleaning failed, waste collection bin is full, please empty promptly",
-            "manual_cleaning_failed_hall_t": "Manual cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-            "manual_cleaning_failed_falldown": "Manual cleaning failure, the litter box has been knocked down, please check.",
-            "manual_cleaning_failed_other": "Manual cleaning failure, device malfunction, please check.",
-            "auto_cleaning_canceled": "Automatic cleaning canceled, device in operation",
-            "periodic_cleaning_canceled": "Periodic cleaning canceled, device in operation",
-            "manual_cleaning_canceled": "Manual cleaning canceled, device in operation",
-            "auto_cleaning_failed_maintenance": "Automatic cleaning failed, the device is in maintenance mode",
-            "periodic_cleaning_failed_maintenance": "Periodically cleaning failed, the device is in maintenance mode",
-            "auto_cleaning_canceled_kitten": "Kitten mode is enabled, auto cleaning is canceled",
-            "periodic_cleaning_canceled_kitten": "Kitten mode is enabled, periodically cleaning is canceled",
-            "litter_empty_completed": "Cat litter empty completed",
-            "litter_empty_terminated": "Cat litter empty terminated",
-            "litter_empty_failed_full": "Cat litter empty failed, waste collection bin is full, please empty promptly",
-            "litter_empty_failed_hall_t": "Cat litter empty failure, the litter box's cupper cover is not placed properly, please check",
-            "litter_empty_failed_falldown": "Cat litter empty failure, the litter box has been knocked down, please check",
-            "litter_empty_failed_other": "Cat litter empty failure, device malfunction, please check.",
-            "reset_completed": "Device reset completed",
-            "reset_terminated": "Device reset terminated",
-            "reset_failed_full": "Device reset failed, waste collection bin is full, please empty promptly",
-            "reset_failed_hall_t": "Device reset failure, the litter box's cupper cover is not placed properly, please check",
-            "reset_failed_falldown": "Device reset failure, the litter box has been knocked down, please check.",
-            "reset_failed_other": "Device reset failure, device malfunction, please check.",
-            "maintenance_mode": "Maintenance mode",
-            "deodorant_finished": "Deodorant finished",
-            "periodic_odor_completed": "Periodic odor removal completed",
-            "manual_odor_completed": "Manual odor removal completed",
-            "auto_odor_terminated": "Automatic odor removal has been terminated.",
-            "periodic_odor_terminated": "Periodic odor removal terminated.",
-            "manual_odor_terminated": "Manual odor removal terminated.",
-            "auto_odor_failed": "Automatic odor removal failed, odor eliminator error",
-            "periodic_odor_failed": "Periodic odor removal failure, odor eliminator malfunction",
-            "manual_odor_failed": "Manual odor removal failure, odor eliminator malfunction",
-            "auto_odor_canceled": "Automatic odor removal has been canceled, the device is running.",
-            "periodic_odor_canceled": "Periodic odor removal canceled. Litter Box is working.",
-            "manual_odor_canceled": "Manual odor removal canceled. Litter Box is working.",
-            "auto_odor_failed_device": "Automatic odor removal failed, no smart spray is connected.",
-            "periodic_odor_failed_device": "Periodic odor removal failed. Odor Removal Device disconnected.",
-            "manual_odor_failed_device": "Manual odor removal failed. Odor Removal Device disconnected.",
-            "auto_odor_failed_batt": "Automatic odor removal failed, please confirm that the battery of smart spray is sufficient.",
-            "periodic_odor_failed_batt": "Periodic odor removal failed. Please make sure the Odor Removal Device has sufficient battery.",
-            "manual_odor_failed_batt": "Manual odor removal failed. Please make sure the Odor Removal Device has sufficient battery.",
-            "auto_odor_failed_low_batt": "Automatic odor removal failed, battery is low.",
-            "periodic_odor_failed_low_batt": "Periodic odor removal failed. Odor Removal Device battery low.",
-            "manual_odor_failed_low_batt": "Manual odor removal failed. Odor Removal Device battery low.",
-            "cat_stopped_odor": "Your cat is using the litter box, deodorization has been canceled",
-            "light_on": "The light is ON",
-            "light_already_on": "The light is on. There is no need to turn on again.",
-            "light_malfunc": "Failing to turn on the light. Device malfunction, please check.",
-            "light_no_device": "Failing to turn on the light. Please bind the odor removal device first.",
-            "light_batt_cap": "Failing to turn on the light. Please check the battery capacity of the odor removal device.",
-            "light_low_batt": "Failing to turn on the light. Low battery capacity of odor removal device."
-          },
-          "state_attributes": {
-            "sub_events": {
-              "state": {
-                "no_events_yet": "No events yet",
-                "event_type_unknown": "Event type unknown",
-                "cleaning_completed": "Cleaning completed",
-                "dumping_over": "Dumping Over",
-                "reset_over": "Reset over",
-                "spray_over": "Spray over",
-                "light_over": "Light over",
-                "pet_out": "Pet out",
-                "auto_cleaning_completed": "Auto cleaning completed",
-                "periodic_cleaning_completed": "Periodic cleaning completed",
-                "manual_cleaning_completed": "Manual cleaning completed",
-                "auto_cleaning_terminated": "Automatic cleaning terminated",
-                "periodic_cleaning_terminated": "Periodic cleaning terminated",
-                "manual_cleaning_terminated": "Manual cleaning terminated",
-                "auto_cleaning_failed_full": "Automatic cleaning failed, waste collection bin is full, please empty promptly",
-                "auto_cleaning_failed_hall_t": "Automatic cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-                "auto_cleaning_failed_falldown": "Automatic cleaning failure, the litter box has been knocked down, please check.",
-                "auto_cleaning_failed_other": "Automatic cleaning failure, device malfunction, please check.",
-                "scheduled_cleaning_failed_full": "Scheduled cleaning failed, waste collection bin is full, please empty promptly",
-                "scheduled_cleaning_failed_hall_t": "Scheduled cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-                "scheduled_cleaning_failed_falldown": "Scheduled cleaning failure, the litter box has been knocked down, please check.",
-                "scheduled_cleaning_failed_other": "Scheduled cleaning failure, device malfunction, please check.",
-                "manual_cleaning_failed_full": "Manual cleaning failed, waste collection bin is full, please empty promptly",
-                "manual_cleaning_failed_hall_t": "Manual cleaning failure, the litter box's upper cupper cover is not placed properly, please check",
-                "manual_cleaning_failed_falldown": "Manual cleaning failure, the litter box has been knocked down, please check.",
-                "manual_cleaning_failed_other": "Manual cleaning failure, device malfunction, please check.",
-                "auto_cleaning_canceled": "Automatic cleaning canceled, device in operation",
-                "periodic_cleaning_canceled": "Periodic cleaning canceled, device in operation",
-                "manual_cleaning_canceled": "Manual cleaning canceled, device in operation",
-                "auto_cleaning_failed_maintenance": "Automatic cleaning failed, the device is in maintenance mode",
-                "periodic_cleaning_failed_maintenance": "Periodically cleaning failed, the device is in maintenance mode",
-                "auto_cleaning_canceled_kitten": "Kitten mode is enabled, auto cleaning is canceled",
-                "periodic_cleaning_canceled_kitten": "Kitten mode is enabled, periodically cleaning is canceled",
-                "litter_empty_completed": "Cat litter empty completed",
-                "litter_empty_terminated": "Cat litter empty terminated",
-                "litter_empty_failed_full": "Cat litter empty failed, waste collection bin is full, please empty promptly",
-                "litter_empty_failed_hall_t": "Cat litter empty failure, the litter box's cupper cover is not placed properly, please check",
-                "litter_empty_failed_falldown": "Cat litter empty failure, the litter box has been knocked down, please check",
-                "litter_empty_failed_other": "Cat litter empty failure, device malfunction, please check.",
-                "reset_completed": "Device reset completed",
-                "reset_terminated": "Device reset terminated",
-                "reset_failed_full": "Device reset failed, waste collection bin is full, please empty promptly",
-                "reset_failed_hall_t": "Device reset failure, the litter box's cupper cover is not placed properly, please check",
-                "reset_failed_falldown": "Device reset failure, the litter box has been knocked down, please check.",
-                "reset_failed_other": "Device reset failure, device malfunction, please check.",
-                "maintenance_mode": "Maintenance mode",
-                "deodorant_finished": "Deodorant finished",
-                "periodic_odor_completed": "Periodic odor removal completed",
-                "manual_odor_completed": "Manual odor removal completed",
-                "auto_odor_terminated": "Automatic odor removal has been terminated.",
-                "periodic_odor_terminated": "Periodic odor removal terminated.",
-                "manual_odor_terminated": "Manual odor removal terminated.",
-                "auto_odor_failed": "Automatic odor removal failed, odor eliminator error",
-                "periodic_odor_failed": "Periodic odor removal failure, odor eliminator malfunction",
-                "manual_odor_failed": "Manual odor removal failure, odor eliminator malfunction",
-                "auto_odor_canceled": "Automatic odor removal has been canceled, the device is running.",
-                "periodic_odor_canceled": "Periodic odor removal canceled. Litter Box is working.",
-                "manual_odor_canceled": "Manual odor removal canceled. Litter Box is working.",
-                "auto_odor_failed_device": "Automatic odor removal failed, no smart spray is connected.",
-                "periodic_odor_failed_device": "Periodic odor removal failed. Odor Removal Device disconnected.",
-                "manual_odor_failed_device": "Manual odor removal failed. Odor Removal Device disconnected.",
-                "auto_odor_failed_batt": "Automatic odor removal failed, please confirm that the battery of smart spray is sufficient.",
-                "periodic_odor_failed_batt": "Periodic odor removal failed. Please make sure the Odor Removal Device has sufficient battery.",
-                "manual_odor_failed_batt": "Manual odor removal failed. Please make sure the Odor Removal Device has sufficient battery.",
-                "auto_odor_failed_low_batt": "Automatic odor removal failed, battery is low.",
-                "periodic_odor_failed_low_batt": "Periodic odor removal failed. Odor Removal Device battery low.",
-                "manual_odor_failed_low_batt": "Manual odor removal failed. Odor Removal Device battery low.",
-                "cat_stopped_odor": "Your cat is using the litter box, deodorization has been canceled",
-                "light_on": "The light is ON",
-                "light_already_on": "The light is on. There is no need to turn on again.",
-                "light_malfunc": "Failing to turn on the light. Device malfunction, please check.",
-                "light_no_device": "Failing to turn on the light. Please bind the odor removal device first.",
-                "light_batt_cap": "Failing to turn on the light. Please check the battery capacity of the odor removal device.",
-                "light_low_batt": "Failing to turn on the light. Low battery capacity of odor removal device.",
-                "no_sub_events": "No associated sub events"
-              }
-            }
-          }
-        },
+        }
+      },
         "max_work_state": {
           "name": "State",
           "state": {
@@ -743,4 +744,4 @@
         }
       }
     }
-}
+  }
